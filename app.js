@@ -17,7 +17,7 @@ const LocalStrategy = require('passport-local');
 const User = require('./models/user');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelpCamp'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelpCamp';
 
 
 const userRoutes = require('./routes/users');
@@ -48,7 +48,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(mongoSanitize());
+app.use(mongoSanitize({
+    replaceWith:"_"
+}));
 app.use(helmet({contentSecurityPolicy:false}))
 
 const secret = process.env.SECRET || 'AC123'
