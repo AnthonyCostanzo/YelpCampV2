@@ -94,7 +94,7 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-
+app.locals.moment = require('moment');
 
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundRoutes)

@@ -30,7 +30,7 @@ const campgroundSchema = new mongoose.Schema({
     },
     price: Number,
     description: String,
-    
+    createdAt: { type: Date, default: Date.now },
     location : String,
     author: {
         type: mongoose.Schema.Types.ObjectId,
